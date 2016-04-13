@@ -54,7 +54,7 @@ public class SkeletonFrame extends JFrame{
 	
 	public SkeletonFrame(){
 		//Call the superclass
-		super("Image Modifier");
+ 		super("Image Modifier");
 		
 		//Initalize Variables
 		menuBar = new JMenuBar();
@@ -62,7 +62,7 @@ public class SkeletonFrame extends JFrame{
 	    File = new JMenuItem("File");
 	    
 	    addPicture = new JMenuItem("Add Picture");
-	    addPicture.setVisible(false);
+	    addPicture.setVisible(true);
 	    
 	    
 	    
@@ -98,6 +98,7 @@ public class SkeletonFrame extends JFrame{
 		//this.add(menuBar);
 		this.setJMenuBar(menuBar);
 		this.getJMenuBar().add(File);
+	//	File.add();
 	//	File.add(fileMenu);
 		
 	}
