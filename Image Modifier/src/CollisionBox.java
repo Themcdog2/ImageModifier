@@ -1,5 +1,7 @@
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 public class CollisionBox extends Rectangle{
 
@@ -11,6 +13,7 @@ public class CollisionBox extends Rectangle{
 	//Do stuff?
 	private BufferedImage linkedImage;
 	private boolean activated;
+	private ArrayList<Point> markedPixels;
 	
 	public CollisionBox(int x, int y, int width, int height, BufferedImage linkedImage) {
 		super(x, y, width, height);

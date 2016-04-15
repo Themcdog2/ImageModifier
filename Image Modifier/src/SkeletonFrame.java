@@ -176,6 +176,26 @@ public class SkeletonFrame extends JFrame implements Runnable {
 		          }
 			}
 		}
+		
+		for(int i = 0; i < collisionBoxs.size(); i++){
+			for(int j = 0; j < collisionBoxs.size(); j++){
+				if(checkForCollisions(collisionBoxs.get(i),collisionBoxs.get(j))){
+					
+				}
+			}
+			
+		}
+	}
+	
+	public boolean checkForCollisions(CollisionBox cb1, CollisionBox cb2){
+		if(cb1.intersects(cb2)){
+			return true;
+		}
+		return false;
+	}
+	
+	public specifiyCollision(){
+		
 	}
 		
 	
@@ -240,15 +260,21 @@ class CanvasUtil extends Canvas{
 			
 			@Override
 			public void mousePressed(MouseEvent e) {
-			
-				mouseX = e.getX();
-				mouseY = e.getY();
-				isMouseDown = true;
+				
+				if(isMouseDown){
+					isMouseDown = false;
+				}else{
+					isMouseDown = true;
+				}
+				
+				for(CollisionBox j : SkeletonFrame.collisionBoxs){
+					if(j.isActivated())
+						j.setActivated(false);
+					
+				}
 				for(CollisionBox j : SkeletonFrame.collisionBoxs){
 					if(j.intersects(e.getX(), e.getY(), 1, 1)){
-						//(e.getX() - (j.getWidth() / 2), e.getY() - (j.getHeight() / 2));
 						j.setActivated(true);
-						//SkeletonFrame.moveObject(j, (int)(e.getX() - (j.getWidth() / 2)), (int)(e.getY() - (j.getHeight() / 2)));
 					}
 				}
 				
@@ -277,6 +303,17 @@ class CanvasUtil extends Canvas{
 					isMouseDown = true;
 				}
 				
+				for(CollisionBox j : SkeletonFrame.collisionBoxs){
+					if(j.isActivated())
+						j.setActivated(false);
+					
+				}
+				for(CollisionBox j : SkeletonFrame.collisionBoxs){
+					if(j.intersects(e.getX(), e.getY(), 1, 1)){
+						j.setActivated(true);
+					}
+				}
+				
 			}
 		});
 		
@@ -291,16 +328,7 @@ class CanvasUtil extends Canvas{
 			
 			@Override
 			public void mouseDragged(MouseEvent e) {
-				
-				
-				isMouseDown = true;
-				for(CollisionBox j : SkeletonFrame.collisionBoxs){
-					if(j.intersects(e.getX(), e.getY(), 1, 1)){
-						//(e.getX() - (j.getWidth() / 2), e.getY() - (j.getHeight() / 2));
-						j.setActivated(true);
-						//SkeletonFrame.moveObject(j, (int)(e.getX() - (j.getWidth() / 2)), (int)(e.getY() - (j.getHeight() / 2)));
-					}
-				}
+			
 				
 			}
 		});
